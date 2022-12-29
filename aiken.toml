@@ -1,0 +1,11 @@
+name = "aiken-lang/prelude"
+version = "0.0.0"
+licences = ["Apache-2.0"]
+description = "The Aiken Prelude, implicitly imported and available at all time."
+
+dependencies = []
+
+[repository]
+user = "aiken-lang"
+project = "prelude"
+platform = "github"
