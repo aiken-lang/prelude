@@ -4,6 +4,25 @@ pub type Bool {
   False
 }
 
+/// A type to compare values.
+///
+/// ```aiken
+/// pub fn compare(left: Int, right: Int) -> Ordering {
+///   if left < right {
+///     Less
+///   } else if less > right {
+///     Greater
+///   } else {
+///     Equal
+///   }
+/// }
+/// ```
+pub type Ordering {
+  Less
+  Equal
+  Greater
+}
+
 /// A type for representing bytes. See [Primitive Types :: ByteArray](https://aiken-lang.org/language-tour/primitive-types#bytearray) for details.
 pub opaque type ByteArray {
   ByteArray
@@ -16,12 +35,12 @@ pub opaque type Data {
 
 /// A type for signed integers. See [Primitive Types :: Int](https://aiken-lang.org/language-tour/primitive-types#int) for details.
 ///
-/// Note: there's not floating numbers in Aiken.
+/// Note: there's no floating numbers in Aiken.
 pub opaque type Int {
   Int
 }
 
-/// A type for text strings. See [Primitive Types :: ByteArray](https://aiken-lang.org/language-tour/primitive-types#string) for details.
+/// A type for text strings. See [Primitive Types :: String](https://aiken-lang.org/language-tour/primitive-types#string) for details.
 pub opaque type String {
   String
 }
@@ -36,7 +55,7 @@ pub opaque type List<a> {
   List
 }
 
-/// A type for returning optional results. See also [stdlib/option](https://aiken-lang.github.io/stdlib)/aiken/option.html).
+/// A type for returning optional results. See also [stdlib/option](https://aiken-lang.github.io/stdlib/aiken/option.html).
 pub type Option<a> {
   None
   Some(a)
@@ -54,9 +73,9 @@ pub fn not(self: Bool) -> Bool {
 ///
 /// ```aiken
 /// let always_14 = always(14, _)
-/// always_14(42) // 14
-/// always_14(1337) // 14
-/// always_14(0) // 14
+/// always_14(42) == 14
+/// always_14(1337) == 14
+/// always_14(0) == 14
 /// ```
 pub fn always(a: a, b _b: b) -> a {
   a
