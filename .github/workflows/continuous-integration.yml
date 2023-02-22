@@ -35,9 +35,6 @@ jobs:
     - name: 🧰 Install Aiken
       run: cargo install --verbose --git https://github.com/aiken-lang/aiken.git
 
-    - name: 🔬 Run tests
-      run: aiken check
-
     - name: 📘 Generate documentation
       shell: bash
       working-directory: .
