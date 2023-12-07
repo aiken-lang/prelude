@@ -57,8 +57,8 @@ pub opaque type List<a> {
 
 /// A type for returning optional results. See also [stdlib/option](https://aiken-lang.github.io/stdlib/aiken/option.html).
 pub type Option<a> {
-  None
   Some(a)
+  None
 }
 
 /// Like `!`, but as a function. Handy for chaining using the pipe operator `|>` or to pass as a function.
