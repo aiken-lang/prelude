@@ -6,27 +6,27 @@
 
 /// Adds two integers (+).
 pub fn add_integer(left: Int, right: Int) -> Int {
-  error
+  fail
 }
 
 /// Subtract two integers (-).
 pub fn subtract_integer(left: Int, right: Int) -> Int {
-  error
+  fail
 }
 
 /// Multiple two integers (*).
 pub fn multiply_integer(left: Int, right: Int) -> Int {
-  error
+  fail
 }
 
 /// Integer division truncated towards negative infinity (/).
 pub fn divide_integer(numerator: Int, denominator: Int) -> Int {
-  error
+  fail
 }
 
 /// Integer division truncated towards zero.
 pub fn quotient_integer(numerator: Int, denominator: Int) -> Int {
-  error
+  fail
 }
 
 /// Integer remainder, satisfying
@@ -35,7 +35,7 @@ pub fn quotient_integer(numerator: Int, denominator: Int) -> Int {
 /// quotient_integer(x, y) * y + remainder_integer(x, y) == x
 /// ```
 pub fn remainder_integer(numerator: Int, denominator: Int) -> Int {
-  error
+  fail
 }
 
 /// Integer modulus (%), satisfying
@@ -44,77 +44,77 @@ pub fn remainder_integer(numerator: Int, denominator: Int) -> Int {
 /// divide_integer(x, y) * y + mod_integer(x, y) == x
 /// ```
 pub fn mod_integer(numerator: Int, denominator: Int) -> Int {
-  error
+  fail
 }
 
 /// Integer equality.
 pub fn equals_integer(left: Int, right: Int) -> Bool {
-  error
+  fail
 }
 
 /// Integer strict inequality.
 pub fn less_than_integer(left: Int, right: Int) -> Int {
-  error
+  fail
 }
 
 /// Integer inequality.
 pub fn less_than_equals_integer(left: Int, right: Int) -> Int {
-  error
+  fail
 }
 
 /// Concatenate two bytearrays together.
 pub fn append_bytearray(left: ByteArray, right: ByteArray) -> ByteArray {
-  error
+  fail
 }
 
 /// Push a byte in front of a bytearray.
 pub fn cons_bytearray(byte: Int, bytes: ByteArray) -> ByteArray {
-  error
+  fail
 }
 
 /// Extract a sub-array from a bytearray given starting and ending indexes.
 pub fn slice_bytearray(start: Int, end: Int, bytes: ByteArray) -> ByteArray {
-  error
+  fail
 }
 
 /// Number of bytes in a bytearray.
 pub fn length_of_bytearray(bytes: ByteArray) -> Int {
-  error
+  fail
 }
 
 /// Access the byte at the given index in the bytearray.
 pub fn index_bytearray(bytes: ByteArray, index: Int) -> Int {
-  error
+  fail
 }
 
 /// Bytearray equality.
 pub fn equals_bytearray(left: ByteArray, right: ByteArray) -> Bool {
-  error
+  fail
 }
 
 /// Bytearray strict inequality.
 pub fn less_than_bytearray(left: ByteArray, right: ByteArray) -> Bool {
-  error
+  fail
 }
 
 /// Bytearray inequality.
 pub fn less_than_equals_bytearray(left: ByteArray, right: ByteArray) -> Bool {
-  error
+  fail
 }
 
 /// Calculate the SHA2-256 hash digest value of a given bytearray. Output is always 32-byte long.
 pub fn sha2_256(preimage: ByteArray) -> ByteArray {
-  error
+  fail
 }
 
 /// Calculate the SHA3-256 hash digest value of a given bytearray. Output is always 32-byte long.
 pub fn sha3_256(preimage: ByteArray) -> ByteArray {
-  error
+  fail
 }
 
 /// Calculate the blake2b-256 hash digest value of a given bytearray. Output is always 32-byte long.
 pub fn blake2b_256(preimage: ByteArray) -> ByteArray {
-  error
+  fail
 }
 
 /// Verify an Ed25519 signature from a associated verification key.
@@ -123,7 +123,7 @@ pub fn verify_ed25519_signature(
   message: ByteArray,
   signature: ByteArray,
 ) -> ByteArray {
-  error
+  fail
 }
 
 /// Verify an ECDSA-SECP256k1 signature from a associated verification key.
@@ -132,7 +132,7 @@ pub fn verify_ecdsa_secp256k1_signature(
   message: ByteArray,
   signature: ByteArray,
 ) -> ByteArray {
-  error
+  fail
 }
 
 /// Verify a SCHNORR-SECP256k1 signature from a associated verification key.
@@ -141,107 +141,107 @@ pub fn verify_schnorr_secp256k1_signature(
   message: ByteArray,
   signature: ByteArray,
 ) -> ByteArray {
-  error
+  fail
 }
 
 /// Concatenate two strings.
 pub fn append_string(left: String, right: String) -> String {
-  error
+  fail
 }
 
 /// String equality.
 pub fn equals_string(left: String, right: String) -> Bool {
-  error
+  fail
 }
 
 /// Convert a string into a UTF-8 encoded array of bytes.
 pub fn encode_utf8(str: String) -> ByteArray {
-  error
+  fail
 }
 
 /// Interpret a UTF-8 encoded array of bytes as a String. Fails if the bytes aren't UTF-8 encoded.
 pub fn decode_utf8(bytes: ByteArray) -> String {
-  error
+  fail
 }
 
 /// Return first computation when the condition is true, and the second otherwise.
 pub fn if_then_else(condition: Bool, when_true: a, when_false: a) -> a {
-  error
+  fail
 }
 
 /// The head of a list. Fails if empty.
 pub fn head_list(list: List<a>) -> a {
-  error
+  fail
 }
 
 /// The tail of a list. Fails if empty.
 pub fn tail_list(list: List<a>) -> List<a> {
-  error
+  fail
 }
 
 /// True when a list is empty.
 pub fn null_list(list: List<a>) -> Bool {
-  error
+  fail
 }
 
 /// Construct a `Data` from a constructor index and a list of fields.
 pub fn constr_data(index: Int, fields: List<Data>) -> Data {
-  error
+  fail
 }
 
 /// Interpret a `Data` as a constructor. Fails if it's not a constructor.
 pub fn un_constr_data(data: Data) -> (Int, List<Data>) {
-  error
+  fail
 }
 
 /// Construct a `Data` from a list of pairs.
 pub fn map_data(items: List<(Data, Data)>) -> Data {
-  error
+  fail
 }
 
 /// Interpret a `Data` as a map. Fails if it's not a map.
 pub fn un_map_data(data: Data) -> List<(Data, Data)> {
-  error
+  fail
 }
 
 /// Construct a `Data` from a list of elements.
 pub fn list_data(items: List<Data>) -> Data {
-  error
+  fail
 }
 
 /// Interpret a `Data` as a list. Fails if it's not a list.
 pub fn un_list_data(data: Data) -> List<Data> {
-  error
+  fail
 }
 
 /// Construct a `Data` from an integer.
 pub fn i_data(i: Int) -> Data {
-  error
+  fail
 }
 
 /// Interpret a `Data` as a integer. Fails if it's not an integer.
 pub fn un_i_data(data: Data) -> Int {
-  error
+  fail
 }
 
 /// Construct a `Data` from a ByteArray
 pub fn b_data(bytes: ByteArray) -> Data {
-  error
+  fail
 }
 
 /// Interpret a `Data` as a bytearray. Fails if it's not a bytearray.
 pub fn un_b_data(data: Data) -> ByteArray {
-  error
+  fail
 }
 
 /// Equality on Data.
 pub fn equals_data(left: Data, right: Data) -> ByteArray {
-  error
+  fail
 }
 
 /// Serialise a Data to bytes, using CBOR.
 pub fn serialise_data(data: Data) -> ByteArray {
-  error
+  fail
 }
 
 /// Select a branch to continue with based on what the Data actually is.
@@ -253,50 +253,127 @@ pub fn choose_data(
   when_int: a,
   when_bytearray: a,
 ) -> a {
-  error
+  fail
 }
 
 /// Construct a Data from a pair of elements.
 pub fn mk_pair_data(left: Data, right: Data) -> (Data, Data) {
-  error
+  fail
 }
 
 /// Construct an empty list of Data.
 pub fn mk_nil_data() -> List<Data> {
-  error
+  fail
 }
 
 /// Construct an empty list of pairs of data.
 pub fn mk_nil_pair_data() -> List<(Data, Data)> {
-  error
+  fail
 }
 
 /// Continue with the continuation when the given term is Void.
 pub fn choose_void(void: Void, when_void: a) -> a {
-  error
+  fail
 }
 
 /// Trace the provided message, and continue with the continuation.
 pub fn debug(message: String, continuation: a) -> a {
-  error
+  fail
 }
 
 /// Get the first element of a pair.
 pub fn fst_pair(pair: (a, b)) -> a {
-  error
+  fail
 }
 
 /// Get the second element of a pair.
 pub fn snd_pair(pair: (a, b)) -> b {
-  error
+  fail
 }
 
 /// Select a branch to continue with depending on whether the list is empty or not.
 pub fn choose_list(list: List<a>, when_empty: b, when_non_empty: b) -> b {
-  error
+  fail
 }
 
 /// Push an element in front of a list.
 pub fn cons_list(elem: a, list: List<a>) -> List<a> {
-  error
+  fail
+}
+
+pub fn bls12_381_g1_add(a: G1Element, b: G1Element) -> G1Element {
+  fail
+}
+
+pub fn bls12_381_g1_neg(self: G1Element) -> G1Element {
+  fail
+}
+
+pub fn bls12_381_g1_scalar_mul(scalar: Int, self: G1Element) -> G1Element {
+  fail
+}
+
+pub fn bls12_381_g1_equal(self: G1Element, other: G1Element) -> Bool {
+  fail
+}
+
+pub fn bls12_381_g1_compress(self: G1Element) -> ByteArray {
+  fail
+}
+
+pub fn bls12_381_g1_uncompress(self: ByteArray) -> G1Element {
+  fail
+}
+
+pub fn bls12_381_g1_hash_to_group(
+  group: ByteArray,
+  domain_separation_tag: ByteArray,
+) -> G1Element {
+  fail
+}
+
+pub fn bls12_381_g2_add(a: G2Element, b: G2Element) -> G2Element {
+  fail
+}
+
+pub fn bls12_381_g2_neg(self: G2Element) -> G2Element {
+  fail
+}
+
+pub fn bls12_381_g2_scalar_mul(scalar: Int, self: G2Element) -> G2Element {
+  fail
+}
+
+pub fn bls12_381_g2_equal(self: G2Element, other: G2Element) -> Bool {
+  fail
+}
+
+pub fn bls12_381_g2_compress(self: G2Element) -> ByteArray {
+  fail
+}
+
+pub fn bls12_381_g2_uncompress(self: ByteArray) -> G2Element {
+  fail
+}
+
+pub fn bls12_381_g2_hash_to_group(
+  group: ByteArray,
+  domain_separation_tag: ByteArray,
+) -> G2Element {
+  fail
+}
+
+pub fn bls12_381_miller_loop(g1: G1Element, g2: G2Element) -> MillerLoopResult {
+  fail
+}
+
+pub fn bls12_381_mul_miller_loop_result(
+  a: MillerLoopResult,
+  b: MillerLoopResult,
+) -> MillerLoopResult {
+  fail
+}
+
+pub fn bls12_381_final_verify(a: MillerLoopResult, b: MillerLoopResult) -> Bool {
+  fail
 }

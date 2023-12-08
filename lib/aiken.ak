@@ -55,6 +55,21 @@ pub opaque type List<a> {
   List
 }
 
+/// A type for representing G1 element of BLS12_381 curves.
+pub opaque type G1Element {
+  G1Element
+}
+
+/// A type for representing G2 element of BLS12_381 curves.
+pub opaque type G2Element {
+  G2Element
+}
+
+/// A type for representing Miller-loop results.
+pub opaque type MillerLoopResult {
+  MillerLoopResult
+}
+
 /// A type for returning optional results. See also [stdlib/option](https://aiken-lang.github.io/stdlib/aiken/option.html).
 pub type Option<a> {
   Some(a)
