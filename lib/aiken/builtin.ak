@@ -72,8 +72,8 @@ pub fn cons_bytearray(byte: Int, bytes: ByteArray) -> ByteArray {
   fail
 }
 
-/// Extract a sub-array from a bytearray given starting and ending indexes.
-pub fn slice_bytearray(start: Int, end: Int, bytes: ByteArray) -> ByteArray {
+/// Extract a sub-array from a bytearray given starting index and length of the sub-array
+pub fn slice_bytearray(start: Int, len: Int, bytes: ByteArray) -> ByteArray {
   fail
 }
 
