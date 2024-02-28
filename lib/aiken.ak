@@ -1,7 +1,7 @@
 /// A type for booleans values. See [Primitive Types :: Bool](https://aiken-lang.org/language-tour/primitive-types#bool) for details.
 pub type Bool {
-  True
   False
+  True
 }
 
 /// A type to compare values.
