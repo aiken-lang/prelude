@@ -115,6 +115,23 @@ pub type Option<a> {
 /// <small>Minimum Plutus Version</small> | <small>1</small>
 /// ---                                   | ---
 ///
+/// A type that represent Pseudo-random generated values.
+pub type PRNG {
+  Seeded { seed: Int, choices: List<Int> }
+  Replayed { choices: List<Int> }
+}
+
+/// <small>Minimum Plutus Version</small> | <small>1</small>
+/// ---                                   | ---
+///
+/// A type to capture random computation that may depend on one another. Useful
+/// for constructing (pseudo-)random values for property-based test.
+pub type Fuzzer<a> =
+  fn(PRNG) -> Option<(PRNG, a)>
+
+/// <small>Minimum Plutus Version</small> | <small>1</small>
+/// ---                                   | ---
+///
 /// Like `!`, but as a function. Handy for chaining using the pipe operator `|>` or to pass as a function.
 pub fn not(self: Bool) -> Bool {
   when self is {
