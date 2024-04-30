@@ -117,8 +117,8 @@ pub type Option<a> {
 ///
 /// A type that represent Pseudo-random generated values.
 pub type PRNG {
-  Seeded { seed: Int, choices: List<Int> }
-  Replayed { choices: List<Int> }
+  Seeded { seed: ByteArray, choices: ByteArray }
+  Replayed { cursor: Int, choices: ByteArray }
 }
 
 /// <small>Minimum Plutus Version</small> | <small>1</small>
