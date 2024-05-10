@@ -79,6 +79,14 @@ pub opaque type List<a> {
   List
 }
 
+/// <small>Minimum Plutus Version</small> | <small>1</small>
+/// ---                                   | ---
+///
+/// An pair of 2 elements.
+pub opaque type Pair<k, v> {
+  Pair
+}
+
 /// <small>Minimum Plutus Version</small> | <small>3</small>
 /// ---                                   | ---
 ///
@@ -117,8 +125,8 @@ pub type Option<a> {
 ///
 /// A type that represent Pseudo-random generated values.
 pub type PRNG {
-  Seeded { seed: Int, choices: List<Int> }
-  Replayed { choices: List<Int> }
+  Seeded { seed: ByteArray, choices: ByteArray }
+  Replayed { cursor: Int, choices: ByteArray }
 }
 
 /// <small>Minimum Plutus Version</small> | <small>1</small>
@@ -128,6 +136,13 @@ pub type PRNG {
 /// for constructing (pseudo-)random values for property-based test.
 pub type Fuzzer<a> =
   fn(PRNG) -> Option<(PRNG, a)>
+
+/// <small>Minimum Plutus Version</small> | <small>1</small>
+/// ---                                   | ---
+///
+/// An associative list of key/value pairs.
+pub type AList<k, v> =
+  List<Pair<k, v>>
 
 /// <small>Minimum Plutus Version</small> | <small>1</small>
 /// ---                                   | ---
