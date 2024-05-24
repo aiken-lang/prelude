@@ -82,7 +82,7 @@ pub fn equals_integer(left: Int, right: Int) -> Bool {
 /// ---                                   | ---
 ///
 /// Integer strict inequality.
-pub fn less_than_integer(left: Int, right: Int) -> Int {
+pub fn less_than_integer(left: Int, right: Int) -> Bool {
   fail
 }
 
@@ -90,7 +90,7 @@ pub fn less_than_integer(left: Int, right: Int) -> Int {
 /// ---                                   | ---
 ///
 /// Integer inequality.
-pub fn less_than_equals_integer(left: Int, right: Int) -> Int {
+pub fn less_than_equals_integer(left: Int, right: Int) -> Bool {
   fail
 }
 
@@ -517,7 +517,7 @@ pub fn un_b_data(data: Data) -> ByteArray {
 /// ---                                   | ---
 ///
 /// Equality on Data.
-pub fn equals_data(left: Data, right: Data) -> ByteArray {
+pub fn equals_data(left: Data, right: Data) -> Bool {
   fail
 }
 
@@ -640,7 +640,7 @@ pub fn verify_ed25519_signature(
   verification_key: ByteArray,
   message: ByteArray,
   signature: ByteArray,
-) -> ByteArray {
+) -> Bool {
   fail
 }
 
@@ -652,7 +652,7 @@ pub fn verify_ecdsa_secp256k1_signature(
   verification_key: ByteArray,
   message: ByteArray,
   signature: ByteArray,
-) -> ByteArray {
+) -> Bool {
   fail
 }
 
@@ -664,7 +664,7 @@ pub fn verify_schnorr_secp256k1_signature(
   verification_key: ByteArray,
   message: ByteArray,
   signature: ByteArray,
-) -> ByteArray {
+) -> Bool {
   fail
 }
 
