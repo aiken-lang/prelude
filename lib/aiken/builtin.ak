@@ -364,7 +364,7 @@ pub fn un_b_data(data: Data) -> ByteArray {
 /// ---                                   | ---
 ///
 /// Equality on Data.
-pub fn equals_data(left: Data, right: Data) -> ByteArray {
+pub fn equals_data(left: Data, right: Data) -> Bool {
   fail
 }
 
