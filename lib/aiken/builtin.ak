@@ -300,7 +300,7 @@ pub fn un_constr_data(data: Data) -> (Int, List<Data>) {
 /// ---                                   | ---
 ///
 /// Construct a `Data` from a list of pairs.
-pub fn map_data(items: List<(Data, Data)>) -> Data {
+pub fn map_data(items: List<Pair<Data, Data>>) -> Data {
   fail
 }
 
@@ -308,7 +308,7 @@ pub fn map_data(items: List<(Data, Data)>) -> Data {
 /// ---                                   | ---
 ///
 /// Interpret a `Data` as a map. Fails if it's not a map.
-pub fn un_map_data(data: Data) -> List<(Data, Data)> {
+pub fn un_map_data(data: Data) -> List<Pair<Data, Data>> {
   fail
 }
 
@@ -395,7 +395,7 @@ pub fn choose_data(
 /// ---                                   | ---
 ///
 /// Construct a Data from a pair of elements.
-pub fn mk_pair_data(left: Data, right: Data) -> (Data, Data) {
+pub fn mk_pair_data(left: Data, right: Data) -> Pair<Data, Data> {
   fail
 }
 
@@ -411,7 +411,7 @@ pub fn mk_nil_data() -> List<Data> {
 /// ---                                   | ---
 ///
 /// Construct an empty list of pairs of data.
-pub fn mk_nil_pair_data() -> List<(Data, Data)> {
+pub fn mk_nil_pair_data() -> List<Pair<Data, Data>> {
   fail
 }
 
@@ -435,7 +435,7 @@ pub fn debug(message: String, continuation: a) -> a {
 /// ---                                   | ---
 ///
 /// Get the first element of a pair.
-pub fn fst_pair(pair: (a, b)) -> a {
+pub fn fst_pair(pair: Pair<a, b>) -> a {
   fail
 }
 
@@ -443,7 +443,7 @@ pub fn fst_pair(pair: (a, b)) -> a {
 /// ---                                   | ---
 ///
 /// Get the second element of a pair.
-pub fn snd_pair(pair: (a, b)) -> b {
+pub fn snd_pair(pair: Pair<a, b>) -> b {
   fail
 }
 
