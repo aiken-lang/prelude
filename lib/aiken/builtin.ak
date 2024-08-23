@@ -4,6 +4,8 @@
 //// of the Plutus virtual machine on failure. They also all rely on call-by-value, which means
 //// that function arguments are eagerly evaluated.
 
+// ## Integer
+
 /// <small>Minimum Plutus Version</small> | <small>1</small>
 /// ---                                   | ---
 ///
@@ -92,6 +94,29 @@ pub fn less_than_equals_integer(left: Int, right: Int) -> Int {
   fail
 }
 
+/// <small>Minimum Plutus Version</small> | <small>3</small>
+/// ---                                   | ---
+///
+/// Convert an integer value into a [ByteArray](../aiken.html#ByteArray).
+///
+/// - The first arguments / specifies the endianness:
+///
+///   boolean value | endianness
+///   ----          | ----
+///   True          | Big endian
+///   False         | Little endian
+///
+/// - The second argument indicates the target `size` (in bytes) of the final [ByteArray](../aiken.html#ByteArray). This allows to allocate a specific number of bytes in advance. The function fails if the given value cannot fit in the requested size or if the `value` is negative. However, a size of 0 will yield a [ByteArray](../aiken.html#ByteArray) that is precisely as large as necessary to fit the `value`.
+pub fn integer_to_bytearray(
+  endianness: Bool,
+  size: Int,
+  value: Int,
+) -> ByteArray {
+  fail
+}
+
+// ## Bytearray
+
 /// <small>Minimum Plutus Version</small> | <small>1</small>
 /// ---                                   | ---
 ///
@@ -156,65 +181,21 @@ pub fn less_than_equals_bytearray(left: ByteArray, right: ByteArray) -> Bool {
   fail
 }
 
-/// <small>Minimum Plutus Version</small> | <small>1</small>
+/// <small>Minimum Plutus Version</small> | <small>3</small>
 /// ---                                   | ---
 ///
-/// Calculate the SHA2-256 hash digest value of a given bytearray. Output is always 32-byte long.
-pub fn sha2_256(preimage: ByteArray) -> ByteArray {
+/// Convert a [ByteArray](../aiken.html#ByteArray) to an integer value. The first argument
+/// specifies the endianness:
+///
+/// boolean value | endianness
+/// ----          | ----
+/// True          | Big endian
+/// False         | Little endian
+pub fn bytearray_to_integer(endianness: Bool, bytes: ByteArray) -> Int {
   fail
 }
 
-/// <small>Minimum Plutus Version</small> | <small>1</small>
-/// ---                                   | ---
-///
-/// Calculate the SHA3-256 hash digest value of a given bytearray. Output is always 32-byte long.
-pub fn sha3_256(preimage: ByteArray) -> ByteArray {
-  fail
-}
-
-/// <small>Minimum Plutus Version</small> | <small>1</small>
-/// ---                                   | ---
-///
-/// Calculate the blake2b-256 hash digest value of a given bytearray. Output is always 32-byte long.
-pub fn blake2b_256(preimage: ByteArray) -> ByteArray {
-  fail
-}
-
-/// <small>Minimum Plutus Version</small> | <small>1</small>
-/// ---                                   | ---
-///
-/// Verify an Ed25519 signature from a associated verification key.
-pub fn verify_ed25519_signature(
-  verification_key: ByteArray,
-  message: ByteArray,
-  signature: ByteArray,
-) -> ByteArray {
-  fail
-}
-
-/// <small>Minimum Plutus Version</small> | <small>2</small>
-/// ---                                   | ---
-///
-/// Verify an ECDSA-SECP256k1 signature from a associated verification key.
-pub fn verify_ecdsa_secp256k1_signature(
-  verification_key: ByteArray,
-  message: ByteArray,
-  signature: ByteArray,
-) -> ByteArray {
-  fail
-}
-
-/// <small>Minimum Plutus Version</small> | <small>2</small>
-/// ---                                   | ---
-///
-/// Verify a SCHNORR-SECP256k1 signature from a associated verification key.
-pub fn verify_schnorr_secp256k1_signature(
-  verification_key: ByteArray,
-  message: ByteArray,
-  signature: ByteArray,
-) -> ByteArray {
-  fail
-}
+// ## String
 
 /// <small>Minimum Plutus Version</small> | <small>1</small>
 /// ---                                   | ---
@@ -248,11 +229,21 @@ pub fn decode_utf8(bytes: ByteArray) -> String {
   fail
 }
 
+// ## List
+
 /// <small>Minimum Plutus Version</small> | <small>1</small>
 /// ---                                   | ---
 ///
-/// Return first computation when the condition is true, and the second otherwise.
-pub fn if_then_else(condition: Bool, when_true: a, when_false: a) -> a {
+/// Construct an empty list of Data.
+pub fn new_list() -> List<Data> {
+  fail
+}
+
+/// <small>Minimum Plutus Version</small> | <small>1</small>
+/// ---                                   | ---
+///
+/// Push an element in front of a list.
+pub fn cons_list(elem: a, list: List<a>) -> List<a> {
   fail
 }
 
@@ -279,6 +270,16 @@ pub fn tail_list(list: List<a>) -> List<a> {
 pub fn null_list(list: List<a>) -> Bool {
   fail
 }
+
+/// <small>Minimum Plutus Version</small> | <small>1</small>
+/// ---                                   | ---
+///
+/// Select a branch to continue with depending on whether the list is empty or not.
+pub fn choose_list(list: List<a>, when_empty: b, when_non_empty: b) -> b {
+  fail
+}
+
+// ## Data
 
 /// <small>Minimum Plutus Version</small> | <small>1</small>
 /// ---                                   | ---
@@ -391,19 +392,13 @@ pub fn choose_data(
   fail
 }
 
-/// <small>Minimum Plutus Version</small> | <small>1</small>
-/// ---                                   | ---
-///
-/// Construct a Data from a pair of elements.
-pub fn mk_pair_data(left: Data, right: Data) -> Pair<Data, Data> {
-  fail
-}
+// ## Pair
 
 /// <small>Minimum Plutus Version</small> | <small>1</small>
 /// ---                                   | ---
 ///
-/// Construct an empty list of Data.
-pub fn mk_nil_data() -> List<Data> {
+/// Construct a Data from a pair of elements.
+pub fn new_pair(left: Data, right: Data) -> Pair<Data, Data> {
   fail
 }
 
@@ -411,23 +406,7 @@ pub fn mk_nil_data() -> List<Data> {
 /// ---                                   | ---
 ///
 /// Construct an empty list of pairs of data.
-pub fn mk_nil_pair_data() -> List<Pair<Data, Data>> {
-  fail
-}
-
-/// <small>Minimum Plutus Version</small> | <small>1</small>
-/// ---                                   | ---
-///
-/// Continue with the continuation when the given term is Void.
-pub fn choose_void(void: Void, when_void: a) -> a {
-  fail
-}
-
-/// <small>Minimum Plutus Version</small> | <small>1</small>
-/// ---                                   | ---
-///
-/// Trace the provided message, and continue with the continuation.
-pub fn debug(message: String, continuation: a) -> a {
+pub fn new_pairs() -> Pairs<Data, Data> {
   fail
 }
 
@@ -447,21 +426,81 @@ pub fn snd_pair(pair: Pair<a, b>) -> b {
   fail
 }
 
+// ## Crypto
+
+// ### Hashing
+
 /// <small>Minimum Plutus Version</small> | <small>1</small>
 /// ---                                   | ---
 ///
-/// Select a branch to continue with depending on whether the list is empty or not.
-pub fn choose_list(list: List<a>, when_empty: b, when_non_empty: b) -> b {
+/// Calculate the blake2b-256 hash digest value of a given bytearray. Output is always 32-byte long.
+pub fn blake2b_256(preimage: ByteArray) -> ByteArray {
+  fail
+}
+
+/// <small>Minimum Plutus Version</small> | <small>3</small>
+/// ---                                   | ---
+///
+/// Calculate the blake2b-224 hash digest value of a given bytearray. Output is always 28-byte long.
+pub fn blake2b_224(preimage: ByteArray) -> ByteArray {
   fail
 }
 
 /// <small>Minimum Plutus Version</small> | <small>1</small>
 /// ---                                   | ---
 ///
-/// Push an element in front of a list.
-pub fn cons_list(elem: a, list: List<a>) -> List<a> {
+/// Calculate the SHA2-256 hash digest value of a given bytearray. Output is always 32-byte long.
+pub fn sha2_256(preimage: ByteArray) -> ByteArray {
   fail
 }
+
+/// <small>Minimum Plutus Version</small> | <small>1</small>
+/// ---                                   | ---
+///
+/// Calculate the SHA3-256 hash digest value of a given bytearray. Output is always 32-byte long.
+pub fn sha3_256(preimage: ByteArray) -> ByteArray {
+  fail
+}
+
+// ### ECDSA
+
+/// <small>Minimum Plutus Version</small> | <small>1</small>
+/// ---                                   | ---
+///
+/// Verify an Ed25519 signature from a associated verification key.
+pub fn verify_ed25519_signature(
+  verification_key: ByteArray,
+  message: ByteArray,
+  signature: ByteArray,
+) -> ByteArray {
+  fail
+}
+
+/// <small>Minimum Plutus Version</small> | <small>2</small>
+/// ---                                   | ---
+///
+/// Verify an ECDSA-SECP256k1 signature from a associated verification key.
+pub fn verify_ecdsa_secp256k1_signature(
+  verification_key: ByteArray,
+  message: ByteArray,
+  signature: ByteArray,
+) -> ByteArray {
+  fail
+}
+
+/// <small>Minimum Plutus Version</small> | <small>2</small>
+/// ---                                   | ---
+///
+/// Verify a SCHNORR-SECP256k1 signature from a associated verification key.
+pub fn verify_schnorr_secp256k1_signature(
+  verification_key: ByteArray,
+  message: ByteArray,
+  signature: ByteArray,
+) -> ByteArray {
+  fail
+}
+
+// ### Pairing
 
 /// <small>Minimum Plutus Version</small> | <small>3</small>
 /// ---                                   | ---
@@ -574,37 +613,28 @@ pub fn bls12_381_final_verify(a: MillerLoopResult, b: MillerLoopResult) -> Bool 
   fail
 }
 
-/// <small>Minimum Plutus Version</small> | <small>3</small>
+// ## Miscellaneous
+
+/// <small>Minimum Plutus Version</small> | <small>1</small>
 /// ---                                   | ---
 ///
-/// Convert a [ByteArray](../aiken.html#ByteArray) to an integer value. The first argument
-/// specifies the endianness:
-///
-/// boolean value | endianness
-/// ----          | ----
-/// True          | Big endian
-/// False         | Little endian
-pub fn bytearray_to_integer(endianness: Bool, bytes: ByteArray) -> Int {
+/// Continue with the continuation when the given term is Void.
+pub fn choose_void(void: Void, when_void: a) -> a {
   fail
 }
 
-/// <small>Minimum Plutus Version</small> | <small>3</small>
+/// <small>Minimum Plutus Version</small> | <small>1</small>
 /// ---                                   | ---
 ///
-/// Convert an integer value into a [ByteArray](../aiken.html#ByteArray).
+/// Trace the provided message, and continue with the continuation.
+pub fn debug(message: String, continuation: a) -> a {
+  fail
+}
+
+/// <small>Minimum Plutus Version</small> | <small>1</small>
+/// ---                                   | ---
 ///
-/// - The first arguments / specifies the endianness:
-///
-///   boolean value | endianness
-///   ----          | ----
-///   True          | Big endian
-///   False         | Little endian
-///
-/// - The second argument indicates the target `size` (in bytes) of the final [ByteArray](../aiken.html#ByteArray). This allows to allocate a specific number of bytes in advance. The function fails if the given value cannot fit in the requested size or if the `value` is negative. However, a size of 0 will yield a [ByteArray](../aiken.html#ByteArray) that is precisely as large as necessary to fit the `value`.
-pub fn integer_to_bytearray(
-  endianness: Bool,
-  size: Int,
-  value: Int,
-) -> ByteArray {
+/// Return first computation when the condition is true, and the second otherwise.
+pub fn if_then_else(condition: Bool, when_true: a, when_false: a) -> a {
   fail
 }

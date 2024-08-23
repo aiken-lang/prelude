@@ -87,6 +87,13 @@ pub opaque type Pair<k, v> {
   Pair
 }
 
+/// <small>Minimum Plutus Version</small> | <small>1</small>
+/// ---                                   | ---
+///
+/// A associative list as a list of pairs of 2 elements.
+pub type Pairs<k, v> =
+  List<Pair<k, v>>
+
 /// <small>Minimum Plutus Version</small> | <small>3</small>
 /// ---                                   | ---
 ///
@@ -136,13 +143,6 @@ pub type PRNG {
 /// for constructing (pseudo-)random values for property-based test.
 pub type Fuzzer<a> =
   fn(PRNG) -> Option<(PRNG, a)>
-
-/// <small>Minimum Plutus Version</small> | <small>1</small>
-/// ---                                   | ---
-///
-/// An associative list of key/value pairs.
-pub type AList<k, v> =
-  List<Pair<k, v>>
 
 /// <small>Minimum Plutus Version</small> | <small>1</small>
 /// ---                                   | ---
