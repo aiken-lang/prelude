@@ -446,6 +446,14 @@ pub fn blake2b_224(preimage: ByteArray) -> ByteArray {
   fail
 }
 
+/// <small>Minimum Plutus Version</small> | <small>3</small>
+/// ---                                   | ---
+///
+/// Calculate the keccak-256 hash digest value of a given bytearray. Output is always 32-byte long.
+pub fn keccak_256(preimage: ByteArray) -> ByteArray {
+  fail
+}
+
 /// <small>Minimum Plutus Version</small> | <small>1</small>
 /// ---                                   | ---
 ///
