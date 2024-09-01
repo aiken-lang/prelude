@@ -130,6 +130,20 @@ pub type Option<a> {
 /// <small>Minimum Plutus Version</small> | <small>1</small>
 /// ---                                   | ---
 ///
+/// A type that like [`Option`](#Option) but that is always `None`. Fundamentally, we have:
+///
+/// ```aiken
+/// let never: Data = Never
+/// let none: Data = None
+/// never == none
+/// ```
+pub type Never {
+  Never
+}
+
+/// <small>Minimum Plutus Version</small> | <small>1</small>
+/// ---                                   | ---
+///
 /// A type that represent Pseudo-random generated values.
 pub type PRNG {
   Seeded { seed: ByteArray, choices: ByteArray }
