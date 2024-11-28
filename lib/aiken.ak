@@ -161,6 +161,14 @@ pub type Fuzzer<a> =
 /// <small>Minimum Plutus Version</small> | <small>1</small>
 /// ---                                   | ---
 ///
+/// A type to capture random computation that may depend on one another.
+/// Complexity of the generation is also controllable for benchmarking.
+pub type ScaledFuzzer<a> =
+  fn(PRNG, Int) -> Option<(PRNG, a)>
+
+/// <small>Minimum Plutus Version</small> | <small>1</small>
+/// ---                                   | ---
+///
 /// Like `!`, but as a function. Handy for chaining using the pipe operator `|>` or to pass as a function.
 pub fn not(self: Bool) -> Bool {
   when self is {
