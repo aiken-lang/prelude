@@ -117,6 +117,8 @@ pub fn integer_to_bytearray(
 
 // ## Bytearray
 
+// ### Constructing
+
 /// <small>Minimum Plutus Version</small> | <small>1</small>
 /// ---                                   | ---
 ///
@@ -133,11 +135,37 @@ pub fn cons_bytearray(byte: Int, bytes: ByteArray) -> ByteArray {
   fail
 }
 
+/// <small>Minimum Plutus Version</small> | <small>2</small>
+/// ---                                   | ---
+///
+/// Construct a `ByteArray` from the repetition of the same byte a specific number of times. Fails if the byte is out-of-bound or if the length is negative.
+pub fn replicate_byte(length: Int, byte: Int) -> ByteArray {
+  todo
+}
+
+// ### Inspecting
+
+/// <small>Minimum Plutus Version</small> | <small>2</small>
+/// ---                                   | ---
+///
+/// Count the number of bits set in the given `ByteArray`.
+pub fn count_set_bits(self: ByteArray) -> Int {
+  todo
+}
+
+/// <small>Minimum Plutus Version</small> | <small>2</small>
+/// ---                                   | ---
+///
+/// Find the index of the first bit set. Note that bits are indexed _from the end_ (see also [`read_bit`](#read_bit) for more details).
+pub fn find_first_set_bit(self: ByteArray) -> Int {
+  todo
+}
+
 /// <small>Minimum Plutus Version</small> | <small>1</small>
 /// ---                                   | ---
 ///
-/// Extract a sub-array from a bytearray given starting and length of the sub-array.
-pub fn slice_bytearray(start: Int, len: Int, bytes: ByteArray) -> ByteArray {
+/// Access the byte at the given index in the bytearray.
+pub fn index_bytearray(bytes: ByteArray, index: Int) -> Int {
   fail
 }
 
@@ -149,13 +177,43 @@ pub fn length_of_bytearray(bytes: ByteArray) -> Int {
   fail
 }
 
+/// <small>Minimum Plutus Version</small> | <small>2</small>
+/// ---                                   | ---
+///
+/// Read a particular bit (`True` if set) at the given index. Fails if the
+/// index is out-of-bounds. Note that the index reads _from the end_. For
+/// example, consider the byte `0xF4` and an index `i`:
+///
+/// i=7 | i=6 | i=5 | i=4 | i=3 | i=2 | i=1 | i=0
+/// --- | --- | --- | --- | --- | --- | --- | ---
+///  1  |  1  |  1  |  1  |  0  |  1  |  0  |  0
+///
+/// So, we have:
+///
+/// ```aiken
+/// read_bit(#[0xF4], 0) == False
+/// read_bit(#[0xF4], 1) == False
+/// read_bit(#[0xF4], 2) == True
+/// read_bit(#[0xF4], 3) == False
+/// read_bit(#[0xF4], 4) == True
+/// read_bit(#[0xF4], 5) == True
+/// read_bit(#[0xF4], 6) == True
+/// read_bit(#[0xF4], 7) == True
+/// read_bit(#[0xF4, 0xF4], 8) == False
+/// ```
+pub fn read_bit(self: ByteArray, index: Int) -> Bool {
+  todo
+}
+
 /// <small>Minimum Plutus Version</small> | <small>1</small>
 /// ---                                   | ---
 ///
-/// Access the byte at the given index in the bytearray.
-pub fn index_bytearray(bytes: ByteArray, index: Int) -> Int {
+/// Extract a sub-array from a bytearray given starting and length of the sub-array.
+pub fn slice_bytearray(start: Int, len: Int, bytes: ByteArray) -> ByteArray {
   fail
 }
+
+// ### Comparing
 
 /// <small>Minimum Plutus Version</small> | <small>1</small>
 /// ---                                   | ---
@@ -180,6 +238,84 @@ pub fn less_than_bytearray(left: ByteArray, right: ByteArray) -> Bool {
 pub fn less_than_equals_bytearray(left: ByteArray, right: ByteArray) -> Bool {
   fail
 }
+
+// ### Bitwise
+
+/// <small>Minimum Plutus Version</small> | <small>2</small>
+/// ---                                   | ---
+///
+/// Logical AND applied to two bytearrays. The first argument indicates whether padding semantics should be used. If this argument is `False`, truncation semantics are used instead.
+pub fn and_bytearray(
+  padded: Bool,
+  left: ByteArray,
+  right: ByteArray,
+) -> ByteArray {
+  todo
+}
+
+/// <small>Minimum Plutus Version</small> | <small>2</small>
+/// ---                                   | ---
+///
+/// Logical OR applied to two bytearrays. The first argument indicates whether padding semantics should be used. If this argument is `False`, truncation semantics are used instead.
+pub fn or_bytearray(
+  padding: Bool,
+  left: ByteArray,
+  right: ByteArray,
+) -> ByteArray {
+  todo
+}
+
+/// <small>Minimum Plutus Version</small> | <small>2</small>
+/// ---                                   | ---
+///
+/// Logical XOR applied to two bytearrays. The first argument indicates whether padding semantics should be used. If this argument is `False`, truncation semantics are used instead.
+pub fn xor_bytearray(
+  padding: Bool,
+  left: ByteArray,
+  right: ByteArray,
+) -> ByteArray {
+  todo
+}
+
+/// <small>Minimum Plutus Version</small> | <small>2</small>
+/// ---                                   | ---
+///
+/// Logical bitwise complement of the bytearray (set becomes unset, and unset becomes set).
+pub fn complement_bytearray(self: ByteArray) -> ByteArray {
+  todo
+}
+
+// ### Shifting
+
+/// <small>Minimum Plutus Version</small> | <small>2</small>
+/// ---                                   | ---
+///
+/// Like [`shift_bytearray`](#shift_bytearray) but instead of introducing zeroes in holes, use the bits that are dropped from either ends.
+///
+/// ```aiken
+/// rotate_bytearray(#[0xEB, 0xFC], 5) == #[0x7F, 0x9D]
+/// rotate_bytearray(#[0xEB, 0xFC], -8) == #[0xFC, 0xEB]
+/// rotate_bytearray(#[0xEB, 0xFC], 8) == #[0xFC, 0xEB]
+/// ```
+pub fn rotate_bytearray(self: ByteArray, offset: Int) -> ByteArray {
+  todo
+}
+
+/// <small>Minimum Plutus Version</small> | <small>2</small>
+/// ---                                   | ---
+///
+/// Shift bits in a `ByteArray` by the given offset, replacing holes with zeroes. The offset can be positive (left-shift) or negative (right-shift).
+///
+/// ```aiken
+/// shift_bytearray(#[0xEB, 0xFC], 5) == #[0x7F, 0x80]
+/// shift_bytearray(#[0xEB, 0xFC], -8) == #[0x00, 0xEB]
+/// shift_bytearray(#[0xEB, 0xFC], 8) == #[0xFC, 0x00]
+/// ```
+pub fn shift_bytearray(self: ByteArray, offset: Int) -> ByteArray {
+  todo
+}
+
+// ### Transforming
 
 /// <small>Minimum Plutus Version</small> | <small>3</small>
 /// ---                                   | ---
@@ -294,6 +430,22 @@ pub fn constr_data(index: Int, fields: List<Data>) -> Data {
 ///
 /// Interpret a `Data` as a constructor. Fails if it's not a constructor.
 pub fn un_constr_data(data: Data) -> (Int, List<Data>) {
+  fail
+}
+
+/// <small>Minimum Plutus Version</small> | <small>1</small>
+/// ---                                   | ---
+///
+/// Interpret a `Data` as a constructor and extract its fields. Slightly more efficient than using [`un_constr_data`](#un_constr_data).
+pub fn unconstr_fields(data: Data) -> List<Data> {
+  fail
+}
+
+/// <small>Minimum Plutus Version</small> | <small>1</small>
+/// ---                                   | ---
+///
+/// Interpret a `Data` as a constructor and extract its index. Slightly more efficient than using [`un_constr_data`](#un_constr_data).
+pub fn unconstr_index(data: Data) -> Int {
   fail
 }
 
@@ -451,6 +603,14 @@ pub fn blake2b_224(preimage: ByteArray) -> ByteArray {
 ///
 /// Calculate the keccak-256 hash digest value of a given bytearray. Output is always 32-byte long.
 pub fn keccak_256(preimage: ByteArray) -> ByteArray {
+  fail
+}
+
+/// <small>Minimum Plutus Version</small> | <small>2</small>
+/// ---                                   | ---
+///
+/// Calculate the ripemd-160 hash digest value of a given bytearray. Output is always 20-byte long.
+pub fn ripemd_160() {
   fail
 }
 
