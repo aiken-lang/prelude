@@ -610,7 +610,7 @@ pub fn keccak_256(preimage: ByteArray) -> ByteArray {
 /// ---                                   | ---
 ///
 /// Calculate the ripemd-160 hash digest value of a given bytearray. Output is always 20-byte long.
-pub fn ripemd_160() {
+pub fn ripemd_160(preimage: ByteArray) -> ByteArray {
   fail
 }
 
