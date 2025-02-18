@@ -429,7 +429,7 @@ pub fn constr_data(index: Int, fields: List<Data>) -> Data {
 /// ---                                   | ---
 ///
 /// Interpret a `Data` as a constructor. Fails if it's not a constructor.
-pub fn un_constr_data(data: Data) -> (Int, List<Data>) {
+pub fn un_constr_data(data: Data) -> Pair<Int, List<Data>> {
   fail
 }
 
