@@ -205,6 +205,14 @@ pub fn read_bit(self: ByteArray, index: Int) -> Bool {
   fail
 }
 
+/// <small>Minimum Plutus Version</small> | <small>1</small>
+/// ---                                   | ---
+///
+/// Extract a sub-array from a bytearray given starting and length of the sub-array.
+pub fn slice_bytearray(start: Int, len: Int, bytes: ByteArray) -> ByteArray {
+  fail
+}
+
 /// <small>Minimum Plutus Version</small> | <small>3</small>
 /// ---                                   | ---
 ///
@@ -222,14 +230,6 @@ pub fn read_bit(self: ByteArray, index: Int) -> Bool {
 /// write_bits(#[0xF4], [0, 1], True) == #[0xF7]
 /// ```
 pub fn write_bits(self: ByteArray, indices: List<Int>, value: Bool) -> ByteArray {
-  fail
-}
-
-/// <small>Minimum Plutus Version</small> | <small>1</small>
-/// ---                                   | ---
-///
-/// Extract a sub-array from a bytearray given starting and length of the sub-array.
-pub fn slice_bytearray(start: Int, len: Int, bytes: ByteArray) -> ByteArray {
   fail
 }
 
