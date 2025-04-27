@@ -161,7 +161,7 @@ pub type Fuzzer<a> =
 /// <small>Minimum Plutus Version</small> | <small>1</small>
 /// ---                                   | ---
 ///
-/// A type to capture scaled fuzzers. Useful for constructing (pseudo-)random 
+/// A type to capture scaled fuzzers. Useful for constructing (pseudo-)random
 /// for benchmarks from a controlled monotically increasing size.
 pub type Sampler<a> =
   fn(Int) -> Fuzzer<a>
@@ -190,6 +190,18 @@ pub fn not(self: Bool) -> Bool {
 /// ```
 pub fn always(a: a, b _b: b) -> a {
   a
+}
+
+/// <small>Minimum Plutus Version</small> | <small>1</small>
+/// ---                                   | ---
+///
+/// An identity function to upcast any serialisable type into `Data`, in places where the compiler cannot implicitly infer it.
+///
+/// ```aiken
+/// let my_uniform_list: List<Data> = [as_data(Foo(14)), as_data(Bar(True))]
+/// ```
+pub fn as_data(data: Data) -> Data {
+  data
 }
 
 /// <small>Minimum Plutus Version</small> | <small>1</small>
