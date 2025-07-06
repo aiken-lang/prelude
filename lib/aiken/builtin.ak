@@ -265,8 +265,14 @@ pub fn less_than_equals_bytearray(left: ByteArray, right: ByteArray) -> Bool {
 /// ---                                   | ---
 ///
 /// Logical AND applied to two bytearrays. The first argument indicates whether padding semantics should be used. If this argument is `False`, truncation semantics are used instead.
+/// 
+/// > [!NOTE]
+/// > All bitwise operations are processed in little-endian bit order. For
+/// > example, ANDing `#"FF"` with `#"00FF"` will yield a `#"00"` (or `#"0000"`
+/// > if `padding` is `True`, since zeros are added to the _right_ of the
+/// > shorter `ByteArray`).
 pub fn and_bytearray(
-  padded: Bool,
+  padding: Bool,
   left: ByteArray,
   right: ByteArray,
 ) -> ByteArray {
@@ -277,6 +283,12 @@ pub fn and_bytearray(
 /// ---                                   | ---
 ///
 /// Logical OR applied to two bytearrays. The first argument indicates whether padding semantics should be used. If this argument is `False`, truncation semantics are used instead.
+/// 
+/// > [!NOTE]
+/// > All bitwise operations are processed in little-endian bit order. For
+/// > example, ORing `#"FF"` with `#"00FF"` will yield a `#"FF"` (or `#"FFFF"`
+/// > if `padding` is `True`, since zeros are added to the _right_ of the
+/// > shorter `ByteArray`).
 pub fn or_bytearray(
   padding: Bool,
   left: ByteArray,
@@ -289,6 +301,12 @@ pub fn or_bytearray(
 /// ---                                   | ---
 ///
 /// Logical XOR applied to two bytearrays. The first argument indicates whether padding semantics should be used. If this argument is `False`, truncation semantics are used instead.
+/// 
+/// > [!NOTE]
+/// > All bitwise operations are processed in little-endian bit order. For
+/// > example, XORing `#"0F"` with `#"00F0"` will yield a `#"0F"` (or `#"0FF0"`
+/// > if `padding` is `True`, since zeros are added to the _right_ of the
+/// > shorter `ByteArray`).
 pub fn xor_bytearray(
   padding: Bool,
   left: ByteArray,
@@ -331,6 +349,9 @@ pub fn rotate_bytearray(self: ByteArray, offset: Int) -> ByteArray {
 /// shift_bytearray(#[0xEB, 0xFC], -8) == #[0x00, 0xEB]
 /// shift_bytearray(#[0xEB, 0xFC], 8) == #[0xFC, 0x00]
 /// ```
+/// > [!NOTE]
+/// > Size of the given `ByteArray` remains unchanged, e.g. performing a
+/// > left-shift of `1` on `#"80"` results in `#"00"`.
 pub fn shift_bytearray(self: ByteArray, offset: Int) -> ByteArray {
   todo
 }
