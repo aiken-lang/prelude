@@ -268,9 +268,8 @@ pub fn less_than_equals_bytearray(left: ByteArray, right: ByteArray) -> Bool {
 /// 
 /// > [!NOTE]
 /// > All bitwise operations are processed in little-endian bit order. For
-/// > example, ANDing `#"FF"` with `#"00FF"` will yield a `#"00"` (or `#"0000"`
-/// > if `padding` is `True`, since zeros are added to the _right_ of the
-/// > shorter `ByteArray`).
+/// > example, ANDing `#"F0"` with `#"0FFF"` will yield a `#"00"` (or `#"00FF"`
+/// > if `padding` is `True`).
 pub fn and_bytearray(
   padding: Bool,
   left: ByteArray,
@@ -287,8 +286,7 @@ pub fn and_bytearray(
 /// > [!NOTE]
 /// > All bitwise operations are processed in little-endian bit order. For
 /// > example, ORing `#"FF"` with `#"00FF"` will yield a `#"FF"` (or `#"FFFF"`
-/// > if `padding` is `True`, since zeros are added to the _right_ of the
-/// > shorter `ByteArray`).
+/// > if `padding` is `True`).
 pub fn or_bytearray(
   padding: Bool,
   left: ByteArray,
@@ -304,9 +302,8 @@ pub fn or_bytearray(
 /// 
 /// > [!NOTE]
 /// > All bitwise operations are processed in little-endian bit order. For
-/// > example, XORing `#"0F"` with `#"00F0"` will yield a `#"0F"` (or `#"0FF0"`
-/// > if `padding` is `True`, since zeros are added to the _right_ of the
-/// > shorter `ByteArray`).
+/// > example, XORing `#"0F"` with `#"0000"` will yield a `#"0F"` (or `#"0F00"`
+/// > if `padding` is `True`).
 pub fn xor_bytearray(
   padding: Bool,
   left: ByteArray,
